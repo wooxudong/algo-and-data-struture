@@ -1,4 +1,4 @@
-package com.xudong.algo.heap;
+package com.xudong.algo.linkedlist;
 
 import org.junit.jupiter.api.Test;
 

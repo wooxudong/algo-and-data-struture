@@ -1,4 +1,4 @@
-package com.xudong.algo.heap;
+package com.xudong.algo.linkedlist;
 
 
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * This can be easily sovled by the {@link java.util.LinkedHashMap} to maintain the insertion
  * order, that seems to be quite a cheat. So I will try the version myself.
- * @author Wu Xudong
+ * @author wooxudong
  */
 public class LRUCache {
 
