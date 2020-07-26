@@ -1,71 +1,84 @@
 package com.xudong.algo.heap;
 
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
+
+/**
+ * This can be easily sovled by the {@link java.util.LinkedHashMap} to maintain the insertion
+ * order, that seems to be quite a cheat. So I will try the version myself.
+ * @author Wu Xudong
+ */
 public class LRUCache {
 
     private final int capacity;
-    private final Map<Integer, Integer> keyValues;
-    private final Queue<Pair<Long, Integer>> lruKeys;
-    private final Map<Integer, Long> mrus;
-    private Long now;
+    private final Map<Integer, BiListNode> map;
+    private final BiListNode head;
+    private final BiListNode tail;
 
     public LRUCache(int i) {
         this.capacity = i;
-        this.keyValues = new HashMap<>(capacity);
-        this.mrus = new HashMap<>(capacity);
-        this.lruKeys = new PriorityQueue<>(capacity, Comparator.comparingLong(Pair::getTime));
-        this.now = 0L;
+        this.map = new HashMap<>(capacity);
+        this.head = new BiListNode(-1, -1);
+        this.tail = new BiListNode(-1, -1);
+        head.next = tail;
+        tail.pre = head;
+    }
+
+    private void removeNode(BiListNode node){
+        node.pre.next = node.next;
+        node.next.pre = node.pre;
+    }
+
+    private void addToTail(BiListNode node){
+        tail.pre.next = node;
+        node.pre = tail.pre;
+        node.next = tail;
+        tail.pre = node;
+    }
+
+    private void removeHead(){
+        map.remove(head.next.key);
+        removeNode(head.next);
     }
 
     public void put(int key, int value) {
-        if (keyValues.size() == capacity && !keyValues.containsKey(key)) {
-            evictOneEntry();
+        if(map.containsKey(key)){
+            BiListNode current = map.get(key);
+            current.value = value;
+            removeNode(current);
+            addToTail(current);
+        }else{
+            BiListNode newNode = new BiListNode(key, value);
+            map.put(key, newNode);
+            addToTail(newNode);
         }
-        keyValues.put(key, value);
-        now += 1L;
-        mrus.put(key, now);
-        lruKeys.offer(new Pair<>(now, key));
+
+        if(map.size() > capacity){
+            removeHead();
+        }
     }
-
-    private void evictOneEntry() {
-        Pair<Long, Integer> lruKey = lruKeys.poll();
-        while (!mrus.containsKey(lruKey.getKey())
-                ||
-                mrus.get(lruKey.getKey()) > (lruKey.getTime()))
-            lruKey = lruKeys.poll();
-
-        mrus.remove(lruKey.getKey());
-        keyValues.remove(lruKey.getKey());
-    }
-
 
     public int get(int key) {
-        if (keyValues.containsKey(key)) {
-            now += 1L;
-            mrus.put(key, now);
-            lruKeys.offer(new Pair<>(now, key));
-            return keyValues.get(key);
-        }
-        return -1;
+        if (!map.containsKey(key)) return -1;
+        BiListNode current = map.get(key);
+        removeNode(current);
+        addToTail(current);
+        return current.value;
     }
 
-    private static class Pair<L, I extends Number> {
-        Long time;
+    private static class BiListNode {
+        BiListNode pre;
+        BiListNode next;
         int key;
+        int value;
 
-        Pair(Long time, int key) {
-            this.time = time;
-            this.key = key;
-        }
-
-        public Long getTime() {
-            return time;
-        }
-
-        public int getKey() {
-            return key;
+        BiListNode(int key, int value) {
+           this.key = key;
+           this.value = value;
+           pre = null;
+           next = null;
         }
     }
 }
