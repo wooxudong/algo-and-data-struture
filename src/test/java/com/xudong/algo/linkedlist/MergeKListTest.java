@@ -1,5 +1,6 @@
 package com.xudong.algo.linkedlist;
 
+import com.xudong.algo.linkedlist.helper.ListNode;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

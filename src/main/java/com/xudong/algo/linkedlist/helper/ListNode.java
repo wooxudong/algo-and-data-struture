@@ -1,4 +1,4 @@
-package com.xudong.algo.linkedlist;
+package com.xudong.algo.linkedlist.helper;
 
 public class ListNode {
     public ListNode next;

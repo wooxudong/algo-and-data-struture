@@ -1,5 +1,7 @@
 package com.xudong.algo.linkedlist;
 
+import com.xudong.algo.linkedlist.helper.ListNode;
+
 import java.util.Arrays;
 
 /**
