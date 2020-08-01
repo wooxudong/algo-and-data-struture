@@ -1,4 +1,4 @@
-package com.xudong.algo;
+package com.xudong.algo.maze;
 
 /**
  * Leetcode-36: Valid Sudoku

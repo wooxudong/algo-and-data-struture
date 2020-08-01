@@ -1,4 +1,4 @@
-package com.xudong.algo.array;
+package com.xudong.algo.array.binarysearch;
 
 public class RangeSearch {
     public Pair<Integer, Integer> searchRange(int[] nums, int target) {

@@ -1,4 +1,4 @@
-package com.xudong.algo.array;
+package com.xudong.algo.array.binarysearch;
 
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.

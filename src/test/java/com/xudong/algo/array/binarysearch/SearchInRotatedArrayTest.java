@@ -1,4 +1,4 @@
-package com.xudong.algo.array;
+package com.xudong.algo.array.binarysearch;
 
 import org.junit.jupiter.api.Test;
 

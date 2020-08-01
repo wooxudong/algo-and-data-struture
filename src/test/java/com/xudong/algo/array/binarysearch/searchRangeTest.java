@@ -1,6 +1,6 @@
-package com.xudong.algo.array;
+package com.xudong.algo.array.binarysearch;
 
-import com.xudong.algo.array.RangeSearch.Pair;
+import com.xudong.algo.array.binarysearch.RangeSearch.Pair;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

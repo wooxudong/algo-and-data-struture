@@ -1,4 +1,4 @@
-package com.xudong.algo;
+package com.xudong.algo.maze;
 
 import org.junit.jupiter.api.Test;
 
