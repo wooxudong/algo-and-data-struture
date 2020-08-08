@@ -22,24 +22,23 @@ package com.xudong.algo.array;
  */
 public class PrefixSumAndDifference {
 
-    public int manipulateAndReturnBiggest(int n, int[][] manipulations) {
+    public long manipulateAndReturnBiggest(int n, int[][] manipulations) {
 
         //since all value is 0 in the beginning, the prefix tree will start with all zeros.
-        int[] difference = new int[n+1];
+        long[] difference = new long[n+1];
 
         for (int[] update : manipulations) {
             difference[update[0]] += update[2];
-            difference[update[1] + 1] -= update[2];
+            if(update[1]+1 <= n) difference[update[1] + 1] -= update[2];
         }
 
-        int max = 0;
-        int accumulated = 0;
+        long max = 0;
+        long accumulated = 0;
         for (int i = 1; i <= n; i ++) {
             //the prefix sum for difference array is the original ai.
             accumulated += difference[i];
             max = Math.max(accumulated, max);
         }
-
         return max;
     }
 }

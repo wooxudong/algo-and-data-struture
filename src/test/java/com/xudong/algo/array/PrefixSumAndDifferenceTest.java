@@ -18,7 +18,7 @@ public class PrefixSumAndDifferenceTest {
         int n = 10;
 
         //when
-        int biggest  = new PrefixSumAndDifference().manipulateAndReturnBiggest(n, manipulations);
+        long biggest  = new PrefixSumAndDifference().manipulateAndReturnBiggest(n, manipulations);
 
         //then
         assertThat(biggest).isEqualTo(10);
