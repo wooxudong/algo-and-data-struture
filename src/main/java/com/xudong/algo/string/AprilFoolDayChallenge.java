@@ -11,10 +11,15 @@ enum SEVERITY {
 }
 
 /*
-Since today is April's Fools day, TWers suspect that there are fake news about TW. They know that the news is false if it contains any of the string(s) "unreadable/messy/badcode/lone" as a subsequence. Help TWers determine whether this piece of news is true.
-INPUT : The first and only line contains a non-empty string s of length no greater than 1000, consisting of lowercase letters of Latin alphabet (a-z).
-OUTPUT : Output the different SEV level based on the sum of the weighted number of unique occurrence of the string(s) "unreadable/messy/badcode/lone" as a subsequence. If none, output NOSEV
- */
+Since today is April's Fools day, TWers suspect that there are fake news about TW.
+They know that the news is false if it contains any of the string(s)
+ "unreadable/messy/badcode/lone" as a subsequence. Help TWers determine whether this piece of news is true.
+INPUT:The first and only line contains a non-empty string s of length no greater than 1000,
+        consisting of lowercase letters of Latin alphabet (a-z).
+OUTPUT:Output the different SEV level based on the sum of
+       the weighted number of unique occurrence of the string(s) "unreadable/messy/badcode/lone" as a subsequence.
+        If none, output NOSEV
+*/
 public class AprilFoolDayChallenge {
     private final String BARCODE = "barcode";
     private final String MESSY = "messy";
