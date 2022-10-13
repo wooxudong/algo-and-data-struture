@@ -38,7 +38,7 @@ public class MergeKList {
         ListNode merged = new ListNode();
         ListNode head = merged;
         while( l1!=null && l2!=null){
-           if(l1.value < l2.value){
+           if(l1.val < l2.val){
                merged.next = l1;
                merged = merged.next;
                l1 = l1.next;

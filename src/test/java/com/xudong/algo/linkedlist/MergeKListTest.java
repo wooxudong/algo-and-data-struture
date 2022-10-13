@@ -69,7 +69,7 @@ public class MergeKListTest {
         if (n1 == null && n2 != null || n1 != null && n2 == null) return false;
         if (n1 == null) return true; //n1 and n2 have the same length
 
-        if (n1.value != n2.value) return false;
+        if (n1.val != n2.val) return false;
         return isEqualTwoList(n1.next, n2.next);
     }
 
@@ -79,7 +79,7 @@ public class MergeKListTest {
         int length = values.length;
         int index = 0;
         while (index < length) {
-            node.value = values[index];
+            node.val = values[index];
             if (index != length - 1) {
                 node.next = new ListNode();
                 node = node.next;
